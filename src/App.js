@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import {BasketList, GoodsList, Search} from './components';
+import {BasketList, GoodsList, Header, Search} from './components';
 import { goods } from './data/goods';
+import {Container} from "@mui/material";
 
 
 const App = () => {
@@ -63,22 +64,28 @@ const App = () => {
     };
 
     return (
-        <div className='App'>
-            <div className='container'>
-                <Search
-                    value={search}
-                    onChange={handleChange}
-                />
-                <GoodsList
-                    goods={products}
-                    setOrder={addToOrder}
-                />
-                <BasketList
-                    order={order}
-                    setOrder={removeFromOrder}
-                />
-            </div>
-        </div>
+        <>
+            <Header />
+            <Container
+                //wrap for content
+                sx={{ //props for styles in MUI
+                    mt: '1rem' // margin-top
+                }}
+            >
+                    <Search
+                        value={search}
+                        onChange={handleChange}
+                    />
+                    <GoodsList
+                        goods={products}
+                        setOrder={addToOrder}
+                    />
+                    <BasketList
+                        order={order}
+                        setOrder={removeFromOrder}
+                    />
+            </Container>
+        </>
     );
 }
 

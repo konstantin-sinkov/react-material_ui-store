@@ -1,20 +1,20 @@
 import React from 'react';
+import {Card, CardContent, CardMedia, Grid} from "@mui/material";
 
 const GoodsItem = (props) => {
-    const { name, price, setOrder } = props;
+    const { name, price, setOrder, poster} = props;
 
     return (
-        <div className='col-12 col-md-6 px-md-2'>
-            <div className='card'>
-                <img
-                    src={`https://via.placeholder.com/300x150.png?text=${name.slice(
-                        0,
-                        12
-                    )}`}
-                    className='card-img-top'
+        <Grid item md={4}>
+            <Card>
+                <CardMedia
+                    component="img"
+                    image={poster}
                     alt={name}
+                    title={name}
+                    sx={{ height: 140}}
                 />
-                <div className='card-body'>
+                <CardContent>
                     <h5 className='card-title'>{name}</h5>
                     <p className='card-text'>Price: {price} $</p>
                     <button
@@ -29,9 +29,9 @@ const GoodsItem = (props) => {
                     >
                         Buy
                     </button>
-                </div>
-            </div>
-        </div>
+                </CardContent>
+            </Card>
+        </Grid>
     );
 };
 
